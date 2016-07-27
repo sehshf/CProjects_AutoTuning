@@ -1,0 +1,46 @@
+# Project: Auto_Tuning
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o gnuplot_i.o simulation.o control_system.o util_func.o interface.o data_treatment.o
+LINKOBJ  = main.o gnuplot_i.o simulation.o control_system.o util_func.o interface.o data_treatment.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = Auto_Tuning.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+gnuplot_i.o: gnuplot_i.c
+	$(CC) -c gnuplot_i.c -o gnuplot_i.o $(CFLAGS)
+
+simulation.o: simulation.c
+	$(CC) -c simulation.c -o simulation.o $(CFLAGS)
+
+control_system.o: control_system.c
+	$(CC) -c control_system.c -o control_system.o $(CFLAGS)
+
+util_func.o: util_func.c
+	$(CC) -c util_func.c -o util_func.o $(CFLAGS)
+
+interface.o: interface.c
+	$(CC) -c interface.c -o interface.o $(CFLAGS)
+
+data_treatment.o: data_treatment.c
+	$(CC) -c data_treatment.c -o data_treatment.o $(CFLAGS)
